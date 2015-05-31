@@ -6,9 +6,9 @@ class CryptXor implements Cryptext
 {
     private $mask;
 
-    public function __construct(array $mask)
+    public function __construct($mask)
     {
-        $this->mask = $mask;
+        $this->mask = str_split($mask);
     }
 
     public function execute($source)
@@ -18,8 +18,9 @@ class CryptXor implements Cryptext
 
         $result = '';
         for ($i = 0; $i < $len; ++$i) {
-            $result .= $source[$i] xor $this->mask[$i % $count];
+            $result .= chr(ord($source[$i]) ^ ord($this->mask[$i % $count]));
         }
+
         return $result;
     }
 }

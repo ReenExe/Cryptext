@@ -5,5 +5,5 @@ use ReenExe\Cryptext\MainCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
-$application->add(new MainCommand());
+$application->add(new MainCommand(__DIR__));
 $application->run();

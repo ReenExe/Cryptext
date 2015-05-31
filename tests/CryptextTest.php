@@ -25,6 +25,6 @@ class CryptextTest extends \PHPUnit_Framework_TestCase
 
     private function generateKey()
     {
-        return str_split(md5(time()));
+        return md5(time());
     }
 }
