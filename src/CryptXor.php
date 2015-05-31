@@ -13,6 +13,13 @@ class CryptXor implements Cryptext
 
     public function execute($source)
     {
-        return $source;
+        $len = strlen($source);
+        $count = count($this->mask);
+
+        $result = '';
+        for ($i = 0; $i < $len; ++$i) {
+            $result .= $source[$i] xor $this->mask[$i % $count];
+        }
+        return $result;
     }
 }

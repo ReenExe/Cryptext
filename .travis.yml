@@ -13,7 +13,7 @@ php:
   - 5.5
 install:
   - pip install unittest-data-provider
-  - sudo sh install.sh
+  - composer update
 script:
   - python cryptexttest.py
   - phpunit
