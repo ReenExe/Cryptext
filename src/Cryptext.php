@@ -2,7 +2,7 @@
 
 namespace ReenExe\Cryptext;
 
-class Cryptext
+interface Cryptext
 {
-
+    public function execute($source);
 }
