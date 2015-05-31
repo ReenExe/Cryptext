@@ -1,1 +1,4 @@
 .idea
+php/composer.phar
+php/composer.lock
+php/vendor

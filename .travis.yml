@@ -1,11 +1,19 @@
-language: python
+language:
+  - python
+  - php
 python:
   - 2.6
   - 2.7
   - 3.2
   - 3.3
   - 3.4
+php:
+  - 5.3
+  - 5.4
+  - 5.5
 install:
   - pip install unittest-data-provider
+  - sudo sh install.sh
 script:
   - python cryptexttest.py
+  - phpunit -c php
