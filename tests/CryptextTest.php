@@ -17,7 +17,9 @@ class CryptextTest extends \PHPUnit_Framework_TestCase
     public function provider()
     {
         return [
-            [$this->generateKey(), 'text']
+            [$this->generateKey(), 'text'],
+            [$this->generateKey(), md5(rand(1, 100))],
+            [$this->generateKey(), 'Українська мова'],
         ];
     }
 
