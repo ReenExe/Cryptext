@@ -16,4 +16,4 @@ install:
   - sudo sh install.sh
 script:
   - python cryptexttest.py
-  - phpunit -c php
+  - phpunit
