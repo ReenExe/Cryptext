@@ -18,9 +18,10 @@ class CryptXor implements Cryptext
 
         $result = '';
         for ($i = 0; $i < $len; ++$i) {
-            $result .= chr(ord($source[$i]) ^ ord($this->mask[$i % $count]));
+            $result .= chr(
+                ord($source[$i]) ^ ord($this->mask[$i % $count])
+            );
         }
-
         return $result;
     }
 }
