@@ -4,3 +4,5 @@
 [![Circle CI](https://circleci.com/gh/ReenExe/Cryptext.svg?style=svg)](https://circleci.com/gh/ReenExe/Cryptext)
 
 TODO: Створити перетворення текстової інформацію, щоб б зберігати захищену інформацію
+
+TODO: need show svg if exists https://snap-ci.com/
