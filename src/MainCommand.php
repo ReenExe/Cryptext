@@ -21,7 +21,10 @@ class MainCommand extends Command
 
     protected function configure()
     {
-        $this->setName('cryptext:main');
+        $this
+            ->setName('cryptext:main')
+            ->addOption('recovery')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -34,15 +37,25 @@ class MainCommand extends Command
 
         $crypt = new CryptXor(file_get_contents($this->getFileFullName($config->get('key'))));
 
+        list($from, $to) = $input->getOption('recovery')
+            ? [$config->get('result'), $config->get('recovery')]
+            : [$config->get('src'), $config->get('result')];
+
+        $this->convert($crypt, $from, $to);
+
+        $output->writeln('<info>Success</info>');
+    }
+
+    private function convert(Cryptext $crypt, $from, $to)
+    {
         file_put_contents(
-            $this->getFileFullName($config->get('result')),
+            $this->getFileFullName($to),
             $crypt->execute(
-                file_get_contents($this->getFileFullName($config->get('src')))
+                file_get_contents($this->getFileFullName($from))
             )
         );
-
-        $output->writeln('<info>Begin</info>');
     }
+
     private function getFileFullName($name)
     {
         return $this->path . DIRECTORY_SEPARATOR . $name;

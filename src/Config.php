@@ -15,11 +15,13 @@ class Config
     public function __construct(array $options)
     {
         $resolver = new OptionsResolver();
-        $resolver->setRequired(['src', 'result', 'key']);
-
-        $resolver->setAllowedTypes('src', 'string');
-        $resolver->setAllowedTypes('result', 'string');
-        $resolver->setAllowedTypes('key', 'string');
+        $resolver
+            ->setRequired(['src', 'result', 'key'])
+            ->setDefined('recovery')
+            ->setAllowedTypes('src', 'string')
+            ->setAllowedTypes('result', 'string')
+            ->setAllowedTypes('key', 'string')
+            ->setAllowedTypes('recovery', 'string');
 
         $this->data = $resolver->resolve($options);
     }
