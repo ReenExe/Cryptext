@@ -1,4 +1,4 @@
 src: src.txt
 key: key
 result: result.txt
-recovery: recovery.txt
+recovery: src.txt
