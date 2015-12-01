@@ -48,12 +48,17 @@ class MainCommand extends Command
 
     private function convert(Cryptext $crypt, $from, $to)
     {
-        file_put_contents(
-            $this->getFileFullName($to),
-            $crypt->execute(
-                file_get_contents($this->getFileFullName($from))
-            )
-        );
+        $dirFrom = $this->getFileFullName($from);
+        $dirTo = $this->getFileFullName($to);
+        $handle = opendir($dirFrom);
+        while ($entry = readdir($handle)) {
+            if (is_file($file = $dirFrom . '/' . $entry)) {
+                file_put_contents(
+                    $dirTo . '/' . $entry,
+                    $crypt->execute(file_get_contents($file) )
+                );
+            }
+        }
     }
 
     private function getFileFullName($name)

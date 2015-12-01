@@ -12,6 +12,7 @@
   "minimum-stability": "dev",
   "require-dev": {
     "phpunit/phpunit": "4.4.*"
+    "symfony/var-dumper": "^3.0"
   },
   "autoload": {
     "psr-4": {"ReenExe\\Cryptext\\": "src/"}

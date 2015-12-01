@@ -1,4 +1,4 @@
-src: data/from/src.txt
+src: data/from
 key: key
-result: data/to/result.txt
-recovery: data/from/src.txt
+result: data/to
+recovery: data/from

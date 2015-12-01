@@ -2,6 +2,6 @@
 composer.phar
 composer.lock
 vendor
-data/from/src.txt
+data/from
 key
 recovery.txt
