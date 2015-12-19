@@ -4,7 +4,6 @@ namespace ReenExe\Cryptext;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Parser;
 
 class MainCommand extends AbstractCommand
 {
@@ -20,7 +19,7 @@ class MainCommand extends AbstractCommand
     {
         $config = $this->getConfig();
 
-        $crypt = new CryptXor(file_get_contents($this->getFileFullName($config->get('key'))));
+        $crypt = new CryptXor($this->getConfigStringKey());
 
         list($from, $to) = $input->getOption('recovery')
             ? [$config->get('result'), $config->get('recovery')]
