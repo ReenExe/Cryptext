@@ -31,6 +31,13 @@ abstract class AbstractCommand extends Command
         return $this->path . DIRECTORY_SEPARATOR . $name;
     }
 
+    protected function getRey()
+    {
+        $key = $this->getConfigStringKey();
+
+        return strpos($key, '//') === false ? $key : eval($key);
+    }
+
     protected function getConfigStringKey()
     {
         return file_get_contents($this->getFileFullName($this->getConfig()->get('key')));

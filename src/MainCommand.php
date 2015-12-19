@@ -19,7 +19,7 @@ class MainCommand extends AbstractCommand
     {
         $config = $this->getConfig();
 
-        $crypt = new CryptXor($this->getConfigStringKey());
+        $crypt = new CryptXor($this->getRey());
 
         list($from, $to) = $input->getOption('recovery')
             ? [$config->get('result'), $config->get('recovery')]
