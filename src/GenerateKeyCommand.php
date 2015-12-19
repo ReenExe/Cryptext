@@ -14,6 +14,9 @@ class GenerateKeyCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("<info>{$this->getRey()}</info>");
+        $key = $this->getRey();
+        $length = strlen($key);
+        $output->writeln("<info>Key: $key</info>");
+        $output->writeln("<info>Length: $length</info>");
     }
 }
