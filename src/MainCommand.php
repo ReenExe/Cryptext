@@ -17,9 +17,10 @@ class MainCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $startTime = microtime(true);
         $config = $this->getConfig();
-
-        $crypt = new CryptXor($this->getRey());
+        $key = $this->getRey();
+        $crypt = new CryptXor($key);
 
         list($from, $to) = $input->getOption('recovery')
             ? [$config->get('result'), $config->get('recovery')]
@@ -28,6 +29,10 @@ class MainCommand extends AbstractCommand
         $this->convert($crypt, $from, $to);
 
         $output->writeln('<info>Success</info>');
+        $keyLength = strlen($key);
+        $output->writeln("<info>Key length: $keyLength</info>");
+        $time = microtime(true) - $startTime;
+        $output->writeln("<info>Time: $time</info>");
     }
 
     private function convert(Cryptext $crypt, $from, $to)
@@ -44,5 +49,4 @@ class MainCommand extends AbstractCommand
             }
         }
     }
-
 }
