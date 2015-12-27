@@ -1,21 +1,24 @@
 {
-  "name": "reenexe/cryptext",
-  "version": "1.0.0",
-  "type": "library",
-  "require": {
-    "php": ">=5.4",
-    "symfony/filesystem": "^3.0",
-    "symfony/yaml": "2.6.*",
-    "symfony/options-resolver": "2.6.*",
-    "symfony/console": "2.6.*",
-    "behat/behat": "^3.0"
-  },
-  "minimum-stability": "dev",
-  "require-dev": {
-    "phpunit/phpunit": "4.4.*",
-    "symfony/var-dumper": "^3.0"
-  },
-  "autoload": {
-    "psr-4": {"ReenExe\\Cryptext\\": "src/"}
-  }
+    "name": "reenexe/cryptext",
+    "version": "1.0.0",
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+        "symfony/filesystem": "^3.0",
+        "symfony/yaml": "2.6.*",
+        "symfony/options-resolver": "2.6.*",
+        "symfony/console": "2.6.*",
+        "behat/behat": "^3.0"
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "4.4.*",
+        "symfony/var-dumper": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ReenExe\\Cryptext\\": "src/",
+            "": "features/bootstrap/"
+        }
+    }
 }

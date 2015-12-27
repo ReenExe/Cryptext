@@ -1,0 +1,18 @@
+default:
+    formatters:
+        pretty:
+            verbose: true
+            paths: false
+            snippets: false
+
+    autoload:
+        '': %paths.base%
+
+    suites:
+        command:
+             paths:
+                - %paths.base%/src/Features
+             contexts:
+                 - ReenExe\Cryptext\Features\Context\DefaultContext
+             filters:
+                 tags: "@command"
