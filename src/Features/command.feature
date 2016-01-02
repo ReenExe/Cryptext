@@ -2,15 +2,15 @@
 Feature:
 
     Scenario:
-        Given I have file "fixtures/from/src.txt" with:
+        Given I make file "fixtures/from/src.txt" with:
         """
 
         """
-        And I have file "fixtures/key" with:
+        And I make file "fixtures/key" with:
         """
         some-secret-key
         """
-        And I have file "fixtures/cryptext.yml" with:
+        And I make file "fixtures/cryptext.yml" with:
         """
         src: from
         key: key
@@ -24,3 +24,6 @@ Feature:
         Key: some-secret-key
         Length: 15
         """
+
+        When I run command "php app.php cryptext:main --path=fixtures"
+        Then Print command response

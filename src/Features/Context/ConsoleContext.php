@@ -35,4 +35,12 @@ class ConsoleContext extends DefaultContext
         $actual = str_replace(PHP_EOL, '', $this->process->getOutput());
         \PHPUnit_Framework_Assert::assertSame($expect, $actual);
     }
+
+    /**
+     * @Then /^Print command response$/
+     */
+    public function printCommandResponse()
+    {
+        echo $this->process->getOutput();
+    }
 }

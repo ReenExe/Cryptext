@@ -15,11 +15,11 @@ class FileSystemContext extends DefaultContext
     }
 
     /**
-     * @Given /^I have file "([^"]*)" with:$/
+     * @Given /^I make file "([^"]*)" with:$/
      * @param string       $filename name of the file (relative path)
      * @param PyStringNode $content  PyString string instance
      */
-    public function iHaveFileWith($filename, PyStringNode $content)
+    public function iMakeFileWith($filename, PyStringNode $content)
     {
         $this->fs->dumpFile($filename, $content);
     }
