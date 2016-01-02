@@ -41,6 +41,12 @@ class ConsoleContext extends DefaultContext
      */
     public function printCommandResponse()
     {
-        echo $this->process->getOutput();
+        if ($this->process->getOutput()) {
+            echo $this->process->getOutput();
+        }
+
+        if ($this->process->getErrorOutput()) {
+            echo $this->process->getErrorOutput();
+        }
     }
 }
