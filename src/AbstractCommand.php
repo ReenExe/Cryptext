@@ -14,7 +14,6 @@ abstract class AbstractCommand extends Command
     public function __construct($path)
     {
         parent::__construct();
-        $this->config = $this->createConfig();
         $this->path = $path;
     }
 
@@ -23,7 +22,7 @@ abstract class AbstractCommand extends Command
      */
     protected function getConfig()
     {
-        return $this->config;
+        return $this->config ?: $this->config = $this->createConfig();
     }
 
     protected function getFileFullName($name)
@@ -50,7 +49,7 @@ abstract class AbstractCommand extends Command
     {
         $parser = new Parser();
 
-        $sourceConfig = $parser->parse(file_get_contents(Config::FILE));
+        $sourceConfig = $parser->parse(file_get_contents($this->getFileFullName(Config::FILE)));
 
         return new Config($sourceConfig);
     }

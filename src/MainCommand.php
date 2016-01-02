@@ -5,6 +5,7 @@ namespace ReenExe\Cryptext;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class MainCommand extends AbstractCommand
 {
@@ -48,13 +49,11 @@ class MainCommand extends AbstractCommand
     {
         $dirFrom = $this->getFileFullName($from);
         $dirTo = $this->getFileFullName($to);
+        $fs = new Filesystem();
         $handle = opendir($dirFrom);
         while ($entry = readdir($handle)) {
             if (is_file($file = $dirFrom . '/' . $entry)) {
-                file_put_contents(
-                    $dirTo . '/' . $entry,
-                    $crypt->execute(file_get_contents($file) )
-                );
+                $fs->dumpFile($dirTo . '/' . $entry, $crypt->execute(file_get_contents($file)));
             }
         }
     }
