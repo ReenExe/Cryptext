@@ -2,13 +2,11 @@
 
 namespace ReenExe\Cryptext\Features\Context;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Symfony\Component\Process\Process;
 
 class ConsoleContext extends DefaultContext
 {
-
     /**
      * @var Process
      */

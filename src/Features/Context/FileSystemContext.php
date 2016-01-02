@@ -2,7 +2,6 @@
 
 namespace ReenExe\Cryptext\Features\Context;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Symfony\Component\Filesystem\Filesystem;
 
