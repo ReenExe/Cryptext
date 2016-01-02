@@ -22,6 +22,24 @@ Feature:
         Length: 15
         """
 
+    Scenario Outline: Generate algorithm key
+        Given I make file "fixtures/key" with:
+        """
+        //
+
+        <algorithm>
+        """
+        When I run command "php app.php generate:key --path=fixtures"
+        Then Command response is:
+        """
+        Key: <expected>
+        Length: <length>
+        """
+    Examples:
+        | algorithm        | expected | length |
+        | return 1;        | 1        | 1      |
+        | return 'secret'; | secret   | 6      |
+
     Scenario Outline:
         Given I make file "fixtures/from/src.txt" with:
         """
