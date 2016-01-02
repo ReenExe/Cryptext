@@ -45,3 +45,6 @@ Feature:
     Examples:
         | source | expected | key |
         |        |          |     |
+        | 111    | PPP      | a   |
+        | 111    | PPP      | aa  |
+        | 111    | PSP      | ab  |
