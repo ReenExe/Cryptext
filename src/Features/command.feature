@@ -1,10 +1,10 @@
 @command
 Feature:
 
-    Scenario:
+    Scenario Outline:
         Given I make file "fixtures/from/src.txt" with:
         """
-
+        <source>
         """
         And I make file "fixtures/key" with:
         """
@@ -28,5 +28,8 @@ Feature:
         When I run command "php app.php cryptext:main --path=fixtures"
         Then I have file "fixtures/to/src.txt" with:
         """
-
+        <expected>
         """
+    Examples:
+        | source | expected |
+        |        |          |
