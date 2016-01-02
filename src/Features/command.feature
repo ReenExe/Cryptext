@@ -2,7 +2,8 @@
 Feature:
 
     Background:
-        Given I make file "fixtures/cryptext.yml" with:
+        Given I clear directory "fixtures"
+        And I make file "fixtures/cryptext.yml" with:
         """
         src: from
         key: key

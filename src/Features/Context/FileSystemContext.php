@@ -37,4 +37,14 @@ class FileSystemContext extends DefaultContext
 
         \PHPUnit_Framework_Assert::assertSame((string)$expectedContent, $actualContent);
     }
+
+    /**
+     * @Given /^I clear directory "([^"]*)"$/
+     * @param string $directory
+     */
+    public function iClearDirectory($directory)
+    {
+        $this->fs->remove($directory);
+        $this->fs->mkdir($directory);
+    }
 }
