@@ -2,4 +2,7 @@
 Feature:
 
     Scenario:
-        Given default test
+        Given I have file "fixtures/from/src.txt" with:
+        """
+
+        """
