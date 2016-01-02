@@ -26,4 +26,7 @@ Feature:
         """
 
         When I run command "php app.php cryptext:main --path=fixtures"
-        Then Print command response
+        Then I have file "fixtures/to/src.txt" with:
+        """
+
+        """
