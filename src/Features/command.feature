@@ -1,7 +1,7 @@
 @command
 Feature:
 
-    Scenario: Generate Key
+    Background:
         Given I make file "fixtures/cryptext.yml" with:
         """
         src: from
@@ -9,7 +9,9 @@ Feature:
         result: to
         recovery: from
         """
-        And I make file "fixtures/key" with:
+
+    Scenario: Generate Key
+        Given I make file "fixtures/key" with:
         """
         some-secret-key
         """
@@ -28,13 +30,6 @@ Feature:
         And I make file "fixtures/key" with:
         """
         <key>
-        """
-        And I make file "fixtures/cryptext.yml" with:
-        """
-        src: from
-        key: key
-        result: to
-        recovery: from
         """
 
         When I run command "php app.php cryptext:main --path=fixtures"
