@@ -10,22 +10,29 @@ class ConsoleContext extends DefaultContext
 {
 
     /**
+     * @var Process
+     */
+    private $process;
+
+    /**
      * @When /^I run command "([^"]*)"$/
      * @param string $command
      */
     public function iRunCommand($command)
     {
-        $process = new Process($command);
+        $this->process = new Process($command);
 
-        $process->run();
+        $this->process->run();
     }
 
     /**
      * @Then /^Command response is:$/
-     * @param PyStringNode $string
+     * @param PyStringNode $expect
      */
-    public function commandResponseIs(PyStringNode $string)
+    public function commandResponseIs(PyStringNode $expect)
     {
-
+        $expect = str_replace(PHP_EOL, '', $expect);
+        $actual = str_replace(PHP_EOL, '', $this->process->getOutput());
+        \PHPUnit_Framework_Assert::assertSame($expect, $actual);
     }
 }

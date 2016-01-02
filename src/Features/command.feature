@@ -18,7 +18,7 @@ Feature:
         recovery: from
         """
 
-        When I run command "php app.php generate:key"
+        When I run command "php app.php generate:key --path=fixtures"
         Then Command response is:
         """
         Key: some-secret-key

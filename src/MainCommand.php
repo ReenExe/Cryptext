@@ -11,8 +11,7 @@ class MainCommand extends AbstractCommand
     {
         $this
             ->setName('cryptext:main')
-            ->addOption('recovery')
-        ;
+            ->addOption('recovery');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
