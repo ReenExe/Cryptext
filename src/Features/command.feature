@@ -36,9 +36,10 @@ Feature:
         Length: <length>
         """
     Examples:
-        | algorithm        | expected | length |
-        | return 1;        | 1        | 1      |
-        | return 'secret'; | secret   | 6      |
+        | algorithm                         | expected | length |
+        | return 1;                         | 1        | 1      |
+        | return 'secret';                  | secret   | 6      |
+        | return join('', range('a', 'c')); | abc      | 3      |
 
     Scenario Outline:
         Given I make file "fixtures/from/src.txt" with:
