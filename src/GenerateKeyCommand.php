@@ -10,20 +10,12 @@ class GenerateKeyCommand extends AbstractCommand
 {
     protected function configure()
     {
-        $this
-            ->setName('generate:key')
-            ->addOption(
-                'path',
-                'p',
-                InputOption::VALUE_OPTIONAL
-            );
+        $this->setName('generate:key');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if ($path = $input->getOption('path')) {
-            $this->path = $path;
-        }
+        $this->path = $input->getOption('path');
 
         $key = $this->getRey();
         $length = strlen($key);

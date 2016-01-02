@@ -3,18 +3,33 @@
 namespace ReenExe\Cryptext;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Yaml\Parser;
 
 abstract class AbstractCommand extends Command
 {
+    protected $defaultPath;
+
     protected $path;
 
     protected $config;
 
-    public function __construct($path)
+    public function __construct($defaultPath)
     {
         parent::__construct();
-        $this->path = $path;
+        $this->configurePathOption($defaultPath);
+
+    }
+
+    protected function configurePathOption($defaultPath)
+    {
+        $this->addOption(
+            'path',
+            'p',
+            InputOption::VALUE_OPTIONAL,
+            'relative path',
+            $defaultPath
+        );
     }
 
     /**

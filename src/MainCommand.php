@@ -13,19 +13,12 @@ class MainCommand extends AbstractCommand
     {
         $this
             ->setName('cryptext:main')
-            ->addOption('recovery')
-            ->addOption(
-                'path',
-                'p',
-                InputOption::VALUE_OPTIONAL
-            );;
+            ->addOption('recovery');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if ($path = $input->getOption('path')) {
-            $this->path = $path;
-        }
+        $this->path = $input->getOption('path');
 
         $startTime = microtime(true);
         $config = $this->getConfig();
