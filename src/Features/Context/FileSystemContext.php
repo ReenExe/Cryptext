@@ -2,11 +2,17 @@
 
 namespace ReenExe\Cryptext\Features\Context;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
+use Symfony\Component\Filesystem\Filesystem;
 
 class FileSystemContext extends DefaultContext
 {
+    private $fs;
+
+    public function __construct()
+    {
+        $this->fs = new Filesystem();
+    }
 
     /**
      * @Given /^I have file "([^"]*)" with:$/
@@ -15,6 +21,6 @@ class FileSystemContext extends DefaultContext
      */
     public function iHaveFileWith($filename, PyStringNode $content)
     {
-
+        $this->fs->dumpFile($filename, $content);
     }
 }
