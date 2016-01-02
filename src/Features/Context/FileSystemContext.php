@@ -28,10 +28,14 @@ class FileSystemContext extends DefaultContext
     /**
      * @Given /^I have file "([^"]*)" with:$/
      * @param string       $filename name of the file (relative path)
-     * @param PyStringNode $content  PyString string instance
+     * @param PyStringNode $expectedContent  PyString string instance
      */
-    public function iHaveFileWith($filename, PyStringNode $content)
+    public function iHaveFileWith($filename, PyStringNode $expectedContent)
     {
+        \PHPUnit_Framework_Assert::assertTrue($this->fs->exists($filename));
 
+        $actualContent = file_get_contents($filename);
+
+        \PHPUnit_Framework_Assert::assertSame((string)$expectedContent, $actualContent);
     }
 }
