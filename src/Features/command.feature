@@ -6,3 +6,21 @@ Feature:
         """
 
         """
+        And I have file "fixtures/key" with:
+        """
+        some-secret-key
+        """
+        And I have file "fixtures/cryptext.yml" with:
+        """
+        src: from
+        key: key
+        result: to
+        recovery: from
+        """
+
+        When I run command "php app.php generate:key"
+        Then Command response is:
+        """
+        Key: some-secret-key
+        Length: 15
+        """

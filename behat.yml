@@ -14,5 +14,6 @@ default:
                 - %paths.base%/src/Features
              contexts:
                  - ReenExe\Cryptext\Features\Context\FileSystemContext
+                 - ReenExe\Cryptext\Features\Context\ConsoleContext
              filters:
                  tags: "@command"
