@@ -3,6 +3,7 @@
 namespace ReenExe\Cryptext;
 
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class MainCommand extends AbstractCommand
@@ -11,11 +12,20 @@ class MainCommand extends AbstractCommand
     {
         $this
             ->setName('cryptext:main')
-            ->addOption('recovery');
+            ->addOption('recovery')
+            ->addOption(
+                'path',
+                'p',
+                InputOption::VALUE_OPTIONAL
+            );;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        if ($path = $input->getOption('path')) {
+            $this->path = $path;
+        }
+
         $startTime = microtime(true);
         $config = $this->getConfig();
         $key = $this->getRey();
