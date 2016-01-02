@@ -3,6 +3,7 @@
 namespace ReenExe\Cryptext;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Yaml\Parser;
 
@@ -21,28 +22,12 @@ abstract class AbstractCommand extends Command
 
     }
 
-    protected function configurePathOption($defaultPath)
-    {
-        $this->addOption(
-            'path',
-            'p',
-            InputOption::VALUE_OPTIONAL,
-            'relative path',
-            $defaultPath
-        );
-    }
-
     /**
      * @return Config
      */
     protected function getConfig()
     {
         return $this->config ?: $this->config = $this->createConfig();
-    }
-
-    protected function getFileFullName($name)
-    {
-        return $this->path . DIRECTORY_SEPARATOR . $name;
     }
 
     protected function getRey()
@@ -57,6 +42,16 @@ abstract class AbstractCommand extends Command
         return file_get_contents($this->getFileFullName($this->getConfig()->get('key')));
     }
 
+    protected function getFileFullName($name)
+    {
+        return $this->path . DIRECTORY_SEPARATOR . $name;
+    }
+
+    protected function setProcessPath(InputInterface $input)
+    {
+        $this->path = $input->getOption('path');
+    }
+
     /**
      * @return Config
      */
@@ -67,5 +62,16 @@ abstract class AbstractCommand extends Command
         $sourceConfig = $parser->parse(file_get_contents($this->getFileFullName(Config::FILE)));
 
         return new Config($sourceConfig);
+    }
+
+    private function configurePathOption($defaultPath)
+    {
+        $this->addOption(
+            'path',
+            'p',
+            InputOption::VALUE_OPTIONAL,
+            'relative path',
+            $defaultPath
+        );
     }
 }
