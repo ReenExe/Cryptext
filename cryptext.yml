@@ -1,4 +1,4 @@
 src: data/from
 key: key
 result: data/to
-recovery: data/from
+recovery: data/recovery

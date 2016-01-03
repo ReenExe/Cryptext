@@ -3,6 +3,7 @@ composer.phar
 composer.lock
 vendor
 data/from
+data/recovery
 key
 fixtures
 recovery.txt
