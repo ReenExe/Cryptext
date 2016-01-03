@@ -7,7 +7,7 @@ class CryptextTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider provider
      */
-    public function testCreate($key, $string)
+    public function test($key, $string)
     {
         $coder = new CryptXor($key);
 
