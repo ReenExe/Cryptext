@@ -22,7 +22,7 @@ class ShuffleTest extends \PHPUnit_Framework_TestCase
     {
        return [
            [
-               123, 'text', 'etxt'
+               12, 'text', 'etxt'
            ],
        ];
     }
