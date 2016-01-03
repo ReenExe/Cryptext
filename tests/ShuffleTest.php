@@ -28,6 +28,10 @@ class ShuffleTest extends \PHPUnit_Framework_TestCase
            [
                12, 'abcdef', 'baefcd'
            ],
+
+           [
+               12, 'abcdefghij', 'baefcdhgij'
+           ],
        ];
     }
 }

@@ -21,16 +21,18 @@ class Shuffle implements Cryptext
         $index = 0;
         $result = '';
 
-        foreach ($this->intervals as $interval) {
-            $shift = $interval * 2;
-            $rest = $length - $index;
-            if ($shift <= $rest) {
-                $result .= substr($source, $index + $interval, $interval) . substr($source, $index, $interval);
-            } else {
-                $result .= substr($source, $index, $interval);
+        do {
+            foreach ($this->intervals as $interval) {
+                $shift = $interval * 2;
+                $rest = $length - $index;
+                if ($shift <= $rest) {
+                    $result .= substr($source, $index + $interval, $interval) . substr($source, $index, $interval);
+                } else {
+                    $result .= substr($source, $index, $interval);
+                }
+                $index += $shift;
             }
-            $index += $shift;
-        }
+        } while ($index < $length);
 
         return $result;
     }
