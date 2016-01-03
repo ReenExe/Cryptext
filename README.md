@@ -6,3 +6,5 @@
 TODO: Need use `Codeception` for cover (https://github.com/Codeception/Codeception)
 
 TODO: need show svg if exists https://snap-ci.com/
+
+Sub: Чи можливо зменшити архів, якщо попередньо `xor` or `shuffle`
