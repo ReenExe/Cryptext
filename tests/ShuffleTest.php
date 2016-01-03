@@ -24,6 +24,10 @@ class ShuffleTest extends \PHPUnit_Framework_TestCase
            [
                12, 'text', 'etxt'
            ],
+
+           [
+               12, 'abcdef', 'baefcd'
+           ],
        ];
     }
 }
