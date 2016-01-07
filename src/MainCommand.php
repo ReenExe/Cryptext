@@ -44,8 +44,13 @@ class MainCommand extends AbstractCommand
         $fs = new Filesystem();
         $handle = opendir($dirFrom);
         while ($entry = readdir($handle)) {
-            if (is_file($file = $dirFrom . '/' . $entry)) {
-                $fs->dumpFile($dirTo . '/' . $entry, $crypt->execute(file_get_contents($file)));
+            if ($entry === '.') continue;
+            if ($entry === '..') continue;
+            $file = $dirFrom . DIRECTORY_SEPARATOR . $entry;
+            if (is_file($file)) {
+                $fs->dumpFile($dirTo . DIRECTORY_SEPARATOR . $entry, $crypt->execute(file_get_contents($file)));
+            } elseif (is_dir($file)) {
+                $this->convert($crypt, $from . DIRECTORY_SEPARATOR . $entry, $to . DIRECTORY_SEPARATOR . $entry);
             }
         }
     }
