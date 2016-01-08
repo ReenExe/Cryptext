@@ -63,3 +63,22 @@ Feature:
         | 111    | PPP      | a   |
         | 111    | PPP      | aa  |
         | 111    | PSP      | ab  |
+
+    Scenario Outline: children
+        Given I make file "fixtures/from/<path>" with:
+        """
+        <source>
+        """
+        And I make file "fixtures/key" with:
+        """
+        <key>
+        """
+        When I run command "php app.php cryptext:main --path=fixtures"
+        Then I have file "fixtures/to/<path>" with:
+        """
+        <expected>
+        """
+    Examples:
+        | path               | source | expected | key |
+        | index.html         | 111    | PPP      | a   |
+        | assets/js/index.js | 111    | PPP      | a   |
