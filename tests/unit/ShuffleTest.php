@@ -35,3 +35,4 @@ class ShuffleTest extends \PHPUnit_Framework_TestCase
        ];
     }
 }
+
