@@ -12,3 +12,5 @@ vendor/bin/codecept bootstrap
 ```bash
 vendor/bin/codecept run
 ```
+
+[Російськомовна документація](http://allframeworks.ru/codeception)
