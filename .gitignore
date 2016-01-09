@@ -7,3 +7,4 @@ data/recovery
 key
 fixtures
 recovery.txt
+tests/_output/*
